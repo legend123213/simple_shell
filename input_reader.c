@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * read_input - stores whatever is passed to it as standard input
+ * *input_reader - stores whatever is passed to it as standard input
  *
  * Return: string containing the input
  */
-char *read_input(void)
+char *input_reader(void)
 {
 	char *line = NULL;
 	ssize_t bytes_read;
-	size_t bufsize;
+	size_t buffer_size;
 	int i;
 
-	bufsize = 0;
-	bytes_read = getline(&line, &bufsize, stdin);
+	buffer_size = 0;
+	bytes_read = getline(&line, &buffer_size, stdin);
 	if (!line)
 	{
 		perror("Error allocating memory for buffer");
@@ -44,3 +44,4 @@ char *read_input(void)
 
 	return (line);
 }
+
