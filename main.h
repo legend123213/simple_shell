@@ -12,7 +12,7 @@
 #include <sys/wait.h>
 extern char **environ;
 
-/* basic functions  */
+/* helper functions  */
 int _putchar(char C);
 void prints(char *str);
 char *str_concatenate(char *s_one, char *s_two);
@@ -24,7 +24,7 @@ char *_str_dup(char *s);
 char *_memory_copy(char *des, char *source, unsigned int n);
 char *_int_to_ascii(int num, int base);
 int _c_toi(char *n);
-/*essential functions */
+/*main functions */
 
 char **split_string(char *line, char **env);
 void pri_prompt(void);
@@ -32,21 +32,21 @@ char *input_reader(void);
 void print_env(char **env);
 void _put_str(char *s);
 
-/*process */
+/*processes */
 
 int execute_command(char **av, char **args,
 	char **env_var, int status, int counter);
 char **search(char **env_var);
 char **_path_chooser(char *fpath);
 
-/*signal */
+/*signals */
 
 void handle_signal(int signal);
 int _sta(char **cmd, char **aktacha);
 int *_error(char *argv, int count, char *args);
 
 
-/*memory */
+/*memory allocation*/
 void *_allocat_loc(unsigned int nm, unsigned int size);
 
 #endif /* MAIN_H */
