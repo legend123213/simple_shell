@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * pri_prompt - prints prompt
+ * prompt - prints prompt
  * Return: void
  */
-void pri_prompt(void)
+void prompt(void)
 {
 	char *buffer = getcwd(NULL, 0);
 
@@ -12,4 +12,3 @@ void pri_prompt(void)
 		prints("$ ");
 	free(buffer);
 }
-

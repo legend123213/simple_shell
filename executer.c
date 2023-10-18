@@ -1,17 +1,17 @@
 #include "main.h"
 
 /**
- * execute_command - executes a command as a child process
+ * execute_cmd - executes a command as a child process
  * @av: array of arguments
  * @args: array of parsed arguments
- * @env_var: environment variables
- * @status: status of the main function
- * @counter: command count
+ * @env: environment variables
+ * @ymh: status of the main function
+ * @kotari: command count
  *
  * Return: 1 on success
  */
-int execute_command(char **av, char **args,
-	char **env_var, int status, int counter)
+
+int execute_cmd(char **av, char **args, char **env, int ymh, int kotari)
 {
 	pid_t pid;
 	int status;
@@ -29,7 +29,7 @@ int execute_command(char **av, char **args,
 	{
 		if (execve(args[0], args, env) == -1)
 		{
-			_error(av[0], counter, args[0]);
+			_error(av[0], kotari, args[0]);
 			free(args);
 			exit(1);
 		}
@@ -37,7 +37,7 @@ int execute_command(char **av, char **args,
 	}
 	else
 	{
-		if (status == 1)
+		if (ymh == 1)
 			free(args[0]);
 
 		free(args);

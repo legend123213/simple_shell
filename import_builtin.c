@@ -1,14 +1,13 @@
 #include "main.h"
 
 /**
- * print_env - prints the current environment
- * @env_var: environment variable
+ * printenv - prints the current environment
+ * @environ: environment variable
  */
-void print_env(char **env_var)
+void printenv(char **environ)
 {
 	int i = 0;
 
-	for (; env_var[i] ; i++)
-		_put_str(env_var[i]);
+	for (; environ[i] ; i++)
+		_puts(environ[i]);
 }
-

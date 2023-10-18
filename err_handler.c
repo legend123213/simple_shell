@@ -24,55 +24,54 @@ int *_error(char *argv, int count, char *args)
 {
 	char *number;
 
-	number = _int_to_ascii(count, 10);
+	number = _itoa(count, 10);
 
-	write(2, argv, _str_length(argv));
+	write(2, argv, _strlen(argv));
 	write(2, ": ", 2);
-	write(2, number, _str_length(number));
+	write(2, number, _strlen(number));
 	write(2, ": ", 2);
-	write(2, args, _str_length(args));
+	write(2, args, _strlen(args));
 	perror(" ");
 
 	return (0);
 }
 
 /**
- * _sta - get file status
+ * _stat - get file status
  * @cmd: array of commands
- * @aketacha: array of directory paths
+ * @menged: array of directory paths
  * Return: 1 on success
  **/
-int _sta(char **cmd, char **aketacha)
+int _stat(char **cmd, char **menged)
 {
 	char *concat_str = NULL, *new_concat = NULL;
-	int mekutriya;
+	int kotari;
 	struct stat sb;
 
-	if (aketacha == NULL)
+	if (menged == NULL)
 	{
-		free(aketacha);
+		free(menged);
 		free(cmd);
 		return (0);
 	}
-	for (mekutriya = 0; aketacha[mekutriya] != NULL ; mekutriya++)
+	for (kotari = 0; menged[kotari] != NULL ; kotari++)
 	{
-		concat_str = str_concatenate(aketacha[mekutriya], "/");
-		new_concat = str_concatenate(concat_str, cmd[0]);
+		concat_str = str_concat(menged[kotari], "/");
+		new_concat = str_concat(concat_str, cmd[0]);
 
 		if (stat(new_concat, &sb) == 0 && (sb.st_mode & S_IXUSR))
 		{
 			cmd[0] = new_concat;
 			free(concat_str);
-			free(aketacha[0]);
-			free(aketacha);
+			free(menged[0]);
+			free(menged);
 			return (1);
 		}
 
 		free(concat_str);
 		free(new_concat);
 	}
-	free(aketacha[0]);
-	free(aketacha);
+	free(menged[0]);
+	free(menged);
 	return (0);
 }
-

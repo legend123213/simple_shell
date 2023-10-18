@@ -13,21 +13,21 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *line;
 	char **args, **path;
-	int mekutriya = 0, akuam = 0;
+	int kotari = 0, huneta = 0;
 	(void) av;
 	signal(SIGINT, handle_signal);
 
 	for (;;)
 	{
 		prompt();
-		line = ;input_reader();
-		args = split_string(line, env);
-		if ((_str_compare(args[0], "\n") != 0) && (_str_compare(args[0], "env") != 0))
+		line = read_input();
+		args = split_str(line, env);
+		if ((_strcmp(args[0], "\n") != 0) && (_strcmp(args[0], "env") != 0))
 		{
-			mekutriya += 1;
+			kotari += 1;
 			path = search(env); /* Search for PATH in the environment variable */
-			akuam = _sta(args, path);
-			execute_command(av, args, env, akuam, mekutriya);
+			huneta = _stat(args, path);
+			execute_cmd(av, args, env, huneta, kotari);
 		}
 		else
 		{
@@ -37,4 +37,3 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	}
 	return (0);
 }
-
