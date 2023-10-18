@@ -19,8 +19,8 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 
 	for (;;)
 	{
-		prompt();
-		line = ;input_reader();
+		pri_prompt();
+		line = input_reader();
 		args = split_string(line, env);
 		if ((_str_compare(args[0], "\n") != 0) && (_str_compare(args[0], "env") != 0))
 		{

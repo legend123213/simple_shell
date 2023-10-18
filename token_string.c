@@ -1,6 +1,28 @@
 #include "main.h"
 
-void handle_exit(char **kal, char *line);
+/**
+ * exit_handler - exit handler
+ * @kal:  kal which is nice
+ * @line: line line in the mirrori
+ * Returns: nothing
+ *
+ */
+
+void exit_handler(char **kal, char *line)
+{
+	int status = 0;
+
+	if (kal[1] != NULL)
+	{
+		status = _c_toi(kal[1]);
+		if (status == 0 && _str_compare(kal[1], "0") != 0)
+			status = 2;
+	}
+
+	free(line);
+	free(kal);
+	exit(status);
+}
 
 /**
  * split_string - splits string
@@ -40,10 +62,10 @@ char **split_string(char *line, char **env)
 	if (_str_compare(kal[0], "exit") == 0)
 	{
 		if (kal[1] != NULL)
-			handle_exit(kal, line);
+			exit_handler(kal, line);
 
 		else
-			handle_exit(kal, line);
+			exit_handler(kal, line);
 	}
 	if ((_str_compare(kal[0], "env") == 0) && kal[1] == NULL)
 		print_env(env);
@@ -53,29 +75,7 @@ char **split_string(char *line, char **env)
 }
 
 
-/**
- * exit_handler - exit handler
- * @kal:  kal which is nice
- * @line: line line in the mirrori
- * Returns: nothing
- *
- */
 
-void exit_handler(char **kal, char *line)
-{
-	int status = 0;
-
-	if (kal[1] != NULL)
-	{
-		status = _c_toi(kal[1]);
-		if (status == 0 && _str_compare(kal[1], "0") != 0)
-			status = 2;
-	}
-
-	free(line);
-	free(kal);
-	exit(status);
-}
 
 /**
  * _c_toi - converts char to int

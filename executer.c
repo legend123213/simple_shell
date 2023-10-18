@@ -5,14 +5,14 @@
  * @av: array of arguments
  * @args: array of parsed arguments
  * @env_var: environment variables
- * @status: status of the main function
+ * @stat: status of the main function
  * @counter: command count
  *
  * Return: 1 on success
  */
 
 int execute_command(char **av, char **args,
-	char **env_var, int status, int counter)
+	char **env_var, int stat, int counter)
 {
 	pid_t pid;
 	int status;
@@ -28,7 +28,7 @@ int execute_command(char **av, char **args,
 	}
 	else if (pid == 0)
 	{
-		if (execve(args[0], args, env) == -1)
+		if (execve(args[0], args, env_var) == -1)
 		{
 			_error(av[0], counter, args[0]);
 			free(args);
@@ -38,7 +38,7 @@ int execute_command(char **av, char **args,
 	}
 	else
 	{
-		if (status == 1)
+		if (stat== 1)
 			free(args[0]);
 
 		free(args);

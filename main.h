@@ -26,7 +26,7 @@ char *_int_to_ascii(int num, int base);
 int _c_toi(char *n);
 /*essential functions */
 
-char **split_str(char *line, char **env);
+char **split_string(char *line, char **env);
 void pri_prompt(void);
 char *input_reader(void);
 void print_env(char **env);

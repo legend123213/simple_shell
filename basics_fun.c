@@ -17,24 +17,6 @@ int _str_length(const char *S)
 	return ((k + 1));
 }
 
-/**
- * *_str_copy - copies a string pointed to by src to dest
- * @source: variale where string will be copied from
- * @des: variable that string will be copied to
- * Return: des
- */
-char *_str_copy(char *des, char *source)
-{
-	int a;
-
-	for (a = 0; source[a] != '\0'; a++)
-	{
-		des[a] = source[a];
-	}
-	des[a] = '\0';
-
-	return (des);
-}
 
 /**
  * *_memory_copy - copies bytes from source to destination
@@ -57,36 +39,6 @@ char *_memory_copy(char *des, char *source, unsigned int n)
 	return (des);
 }
 
-/**
- * _str_dup - copies the string and it returns their pointer
- *
- * @s: string to be copied
- * Return: String
- */
-
-char *_str_dup(char *s)
-{
-	char *dup;
-	unsigned int i, counter;
-
-	i = 0;
-	counter = 0;
-	if (s == NULL)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		i++;
-		counter++;
-	}
-	counter++;
-	dup = malloc(sizeof(char) * counter);
-	if (dup == NULL)
-		return (NULL);
-	for (i = 0; i < sizeof(char) * counter; i++)
-		dup[i] = s[i];
-
-	return (dup);
-}
 /**
  * _str_compare - this compares two strings
  * @s_one: first string
