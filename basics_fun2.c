@@ -1,26 +1,26 @@
 #include "main.h"
 
 /**
- *_calloc -allocated memoria for nmeb elemn de zise bytes
- *@nmemb: number of element in the array
- *@size: bytes for each position in the array
+ *_allocat_loc -allocated memoria for nmeb elemn de zise bytes
+ *@nm: number of element in the array
+ *@s: bytes for each position in the array
  *Return: pointer void
  */
 
 
-void *_calloc(unsigned int nmemb, unsigned int size)
+void *_allocat_loc(unsigned int nm, unsigned int s)
 {
 	char *p;
 	unsigned int i;
 
-	if (nmemb == 0 || size == 0)
+	if (nm == 0 || s == 0)
 		return (NULL);
 
-	p = malloc(nmemb * size);
+	p = malloc(nm * s);
 	if (p == NULL)
 		return (NULL);
 
-	for (i = 0; i < nmemb * size; i++)
+	for (i = 0; i < nm * s; i++)
 		p[i] = 0;
 
 	return (p);
@@ -28,29 +28,29 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 }
 
 /**
- *_puts - prints a string
- *@str: A to be printed
+ *_put_str - prints a strings
+ *@s: A to be printed
  *
  *Return: void
  */
-void _puts(char *str)
+void _put_str(char *s)
 {
 	int i;
 
-	for (i = 0 ; str[i] != '\0' ; i++)
+	for (i = 0 ; s[i] != '\0' ; i++)
 	{
-		_putchar(str[i]);
+		_putchar(s[i]);
 	}
 	_putchar('\n');
 }
 
 /**
  * search - gets the path to execute commands
- * @environ: Environment variable
+ * @env_var: Environment variable
  * Return: kalat_path (array of directories containing the command)
  *	or NULL on failure
  **/
-char **search(char **environ)
+char **search(char **env_var)
 {
 	int position = 0;
 	char **kalat_path;
@@ -59,22 +59,22 @@ char **search(char **environ)
 	{
 		if (environ[position][0] == 'P' && environ[position][2] == 'T')
 		{
-			kalat_path = _which(environ[position]);
+			kalat_path = _which(env_var[position]);
 		}
 	}
 	return (kalat_path);
 }
 
 /**
- * _itoa - converts an integer to ASCII
+ * _int_to_ascii - converts an integer to ASCII
  * @num: number
  * @base: base
  * reference: geeksforgeeks
  * Return: character string
  **/
-char *_itoa(int num, int base)
+char *_int_to_ascii(int num, int base)
 {
-	static char *digits = "0123456789abcdef";
+	static char *d = "0123456789abcdef";
 	static char buffer[50];
 	char sign = 0;
 	char *ptr;
@@ -89,7 +89,7 @@ char *_itoa(int num, int base)
 	ptr = &buffer[49];
 	*ptr = '\0';
 	do {
-		*--ptr = digits[n % base];
+		*--ptr = d[n % base];
 		n /= base;
 	} while (n != 0);
 
@@ -100,26 +100,26 @@ char *_itoa(int num, int base)
 }
 
 /**
- * str_concat - concatenate two strings
- * @s1: first string
- * @s2: second string
+ * str_concatenate - concatenate two strings
+ * @s_one: first string
+ * @s_two: second string
  *
  * Return: pointer to the concatenated string
  */
-char *str_concat(char *s1, char *s2)
+char *str_concatenate(char *s_one, char *s_two)
 {
 	char *dest;
 	unsigned int i, j, size;
 
 	/* If the array is empty */
-	if (s1 == NULL)
-		s1 = "";
+	if (s_one == NULL)
+		s_one = "";
 
-	if (s2 == NULL)
-		s2 = "";
+	if (s_two == NULL)
+		s_two = "";
 	/* Count total size */
 
-	size = (_strlen(s1) + _strlen(s2) + 1);
+	size = (_str_length(s) + _str_length(s_two) + 1);
 
 	/* Allocate memory */
 
@@ -131,12 +131,12 @@ char *str_concat(char *s1, char *s2)
 	}
 
 	/* Concatenate arrays */
-	for (i = 0; *(s1 + i) != '\0'; i++)
-		*(dest + i) = *(s1 + i);
+	for (i = 0; *(s_one + i) != '\0'; i++)
+		*(dest + i) = *(s_one + i);
 
-	for (j = 0; *(s2 + j) != '\0'; j++)
+	for (j = 0; *(s_two + j) != '\0'; j++)
 	{
-		*(dest + i) = *(s2 + j);
+		*(dest + i) = *(s_two + j);
 		i++;
 
 	}
@@ -144,3 +144,4 @@ char *str_concat(char *s1, char *s2)
 	return (dest);
 
 }
+

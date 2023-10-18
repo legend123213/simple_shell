@@ -1,111 +1,112 @@
 #include "main.h"
 
 /**
- * _strlen - returns a string
- * @s: integer to be used
+ * _str_length - returns a string
+ * @S: integer to be used
  * Return: length of string
  */
-int _strlen(const char *s)
+int _str_length(const char *S)
 {
-	int i;
+	int k;
 
-	i = 0;
-	while (s[i] != '\0')
+	k = 0;
+	while (S[k] != '\0')
 	{
-		i++;
+		k++;
 	}
-	return ((i + 1));
+	return ((k + 1));
 }
 
 /**
- * *_strcpy - copies a string pointed to by src to dest
- * @src: variale where string will be copied from
- * @dest: variable that string will be copied to
- * Return: dest
+ * *_str_copy - copies a string pointed to by src to dest
+ * @source: variale where string will be copied from
+ * @des: variable that string will be copied to
+ * Return: des
  */
-char *_strcpy(char *dest, char *src)
+char *_str_copy(char *des, char *source)
 {
-	int p;
+	int a;
 
-	for (p = 0; src[p] != '\0'; p++)
+	for (a = 0; source[a] != '\0'; a++)
 	{
-		dest[p] = src[p];
+		des[a] = source[a];
 	}
-	dest[p] = '\0';
+	des[a] = '\0';
 
-	return (dest);
+	return (des);
 }
 
 /**
- * _memcpy - copies bytes from src to dest
+ * *_memory_copy - copies bytes from source to destination
  *
- * @dest: memory to be transfereed to
- * @src: memory to be transferred from
+ * @des: memory to be transfer to
+ * @source: memory to be transfer from
  * @n: number of bytes to be transfered
  * Return:dest
  */
-char *_memcpy(char *dest, char *src, unsigned int n)
+char *_memory_copy(char *des, char *source, unsigned int n)
 {
 	int i;
 
 	for (i = 0; n > 0; i++)
 	{
-		dest[i] = src[i];
+		des[i] = source[i];
 		n--;
 	}
 
-	return (dest);
+	return (des);
 }
 
 /**
- * _strdup - copies string and returns its pointer
+ * _str_dup - copies the string and it returns their pointer
  *
- * @str: string to be copied
+ * @s: string to be copied
  * Return: String
  */
 
-char *_strdup(char *str)
+char *_str_dup(char *s)
 {
 	char *dup;
-	unsigned int i, count;
+	unsigned int i, counter;
 
 	i = 0;
-	count = 0;
-	if (str == NULL)
+	counter = 0;
+	if (s == NULL)
 		return (NULL);
-	while (str[i] != '\0')
+	while (s[i] != '\0')
 	{
 		i++;
-		count++;
+		counter++;
 	}
-	count++;
-	dup = malloc(sizeof(char) * count);
+	counter++;
+	dup = malloc(sizeof(char) * counter);
 	if (dup == NULL)
 		return (NULL);
-	for (i = 0; i < sizeof(char) * count; i++)
-		dup[i] = str[i];
+	for (i = 0; i < sizeof(char) * counter; i++)
+		dup[i] = s[i];
 
 	return (dup);
 }
 /**
- * _strcmp - compares two strings
- * @s1: first string
- * @s2: second string
+ * _str_compare - this compares two strings
+ * @s_one: first string
+ * @s_two: second string
  * Return: integer
  */
 
-int _strcmp(char *s1, char *s2)
+int _str_compare(char *s_one, char *s_two)
 {
 	int s;
 
 	s = 0;
-	while (s1[s] != '\0' && s2[s] != '\0')
+	while (s_one[s] != '\0' && s_two[s] != '\0')
 	{
-		if (s1[s] != s2[s])
-			return (s1[s] - s2[s]);
+		if (s_one[s] != s_two[s])
+			return (s_one[s] - s_two[s]);
 
 		s++;
 	}
 
 	return (0);
 }
+
